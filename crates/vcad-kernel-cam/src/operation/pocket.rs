@@ -177,12 +177,12 @@ impl Pocket2D {
         let mut rings = Vec::new();
         let mut current_offset = initial_offset;
 
-        // Scale factor for geo-clipper (uses integer math)
+        // Scale factor for clipper2-rust (uses integer math)
         let scale = 1000.0;
 
         loop {
             // Offset inward (negative value)
-            let offset_distance = -current_offset; // geo-clipper applies scale internally.
+            let offset_distance = -current_offset; // clipper2-rust applies scale internally.
 
             let result = polygon.offset(
                 offset_distance,
