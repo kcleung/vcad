@@ -196,7 +196,7 @@ impl Contour2D {
         // Use geo-clipper for offset
         let polygon = self.contour.to_geo_polygon();
         let scale = 1000.0;
-
+        // Use clipper2-rust for offset
         let result = polygon.offset(
             offset, // geo-clipper applies the coordinate scale internally.
             clipper2_rust::offset::JoinType::Round(10.0),
