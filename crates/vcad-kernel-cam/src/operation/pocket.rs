@@ -5,7 +5,7 @@ use crate::{CamError, CamSettings, Tool, Toolpath, ToolpathSegment};
 #[cfg(not(target_arch = "wasm32"))]
 use geo::algorithm::centroid::Centroid;
 #[cfg(not(target_arch = "wasm32"))]
-use geo_clipper::Clipper;
+use clipper2_rust::{clipper, offset};
 use serde::{Deserialize, Serialize};
 
 /// 2D pocket clearing operation.
@@ -166,7 +166,7 @@ impl Pocket2D {
         Ok(toolpath)
     }
 
-    /// Generate concentric offset rings for the pocket (native version with geo-clipper).
+    /// Generate concentric offset rings for the pocket (native version with clipper2-rust).
     #[cfg(not(target_arch = "wasm32"))]
     fn generate_offset_rings(
         &self,
@@ -186,8 +186,8 @@ impl Pocket2D {
 
             let result = polygon.offset(
                 offset_distance,
-                geo_clipper::JoinType::Round(10.0),
-                geo_clipper::EndType::ClosedPolygon,
+                clipper2_rust::offset::JoinType::Round(10.0),
+                clipper2_rust::offset::EndType::ClosedPolygon,
                 scale,
             );
 
