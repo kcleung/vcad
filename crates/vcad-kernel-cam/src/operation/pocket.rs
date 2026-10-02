@@ -187,7 +187,7 @@ impl Pocket2D {
             let result = polygon.offset(
                 offset_distance,
                 clipper2_rust::offset::JoinType::Round(10.0),
-                clipper2_rust::offset::EndType::ClosedPolygon,
+                clipper2_rust::offset::EndType::Polygon,
                 scale,
             );
 
