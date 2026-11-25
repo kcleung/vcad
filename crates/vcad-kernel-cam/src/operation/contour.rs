@@ -4,9 +4,9 @@ use crate::operation::{Contour, ContourSegment, Point2D};
 use crate::{CamError, CamSettings, Tool, Toolpath, ToolpathSegment};
 
 #[cfg(not(target_arch = "wasm32"))]
-use geo::Buffer;
-#[cfg(not(target_arch = "wasm32"))]
 use geo::algorithm::buffer::{BufferStyle, LineJoin};
+#[cfg(not(target_arch = "wasm32"))]
+use geo::Buffer;
 
 use serde::{Deserialize, Serialize};
 

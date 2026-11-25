@@ -4,11 +4,11 @@ use crate::operation::Contour;
 use crate::{CamError, CamSettings, Tool, Toolpath, ToolpathSegment};
 
 #[cfg(not(target_arch = "wasm32"))]
+use geo::algorithm::buffer::{BufferStyle, LineJoin};
+#[cfg(not(target_arch = "wasm32"))]
 use geo::algorithm::centroid::Centroid;
 #[cfg(not(target_arch = "wasm32"))]
 use geo::Buffer;
-#[cfg(not(target_arch = "wasm32"))]
-use geo::algorithm::buffer::{BufferStyle, LineJoin};
 
 use serde::{Deserialize, Serialize};
 
